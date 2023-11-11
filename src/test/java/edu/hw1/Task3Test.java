@@ -40,5 +40,6 @@ public class Task3Test {
         int[] arr2 = {10, 15, 7, 12};
         assertEquals(15, Task3.findMax(arr2));
     }
+
 }
 

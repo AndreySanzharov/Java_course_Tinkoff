@@ -29,5 +29,6 @@ public class Task6 {
         }
         return Integer.parseInt(new String(digits));
     }
+
 }
 

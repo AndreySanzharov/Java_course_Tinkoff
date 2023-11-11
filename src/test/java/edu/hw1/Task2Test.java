@@ -18,4 +18,5 @@ public class Task2Test {
     public void ebeb() {
         assertEquals(10, Task2.countDigits(3000000001L));
     }
+
 }

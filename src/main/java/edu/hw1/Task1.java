@@ -2,7 +2,7 @@ package edu.hw1;
 
 import java.util.Objects;
 
-public final class Task1 {
+public class Task1 {
     public static final int SIXTY = 60;
 
     public static int minutesToSeconds(String time) {

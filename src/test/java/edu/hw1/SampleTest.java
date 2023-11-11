@@ -15,4 +15,5 @@ public class SampleTest {
         // then
         assertThat(evenNumbers).containsExactly(2, 4).hasSize(2);
     }
+
 }

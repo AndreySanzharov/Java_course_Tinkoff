@@ -15,4 +15,5 @@ public class Task4Test {
         assertEquals("", Task4.fixString(""));
         assertEquals(" ", Task4.fixString(" "));
     }
+
 }

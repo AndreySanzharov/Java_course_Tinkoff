@@ -26,5 +26,6 @@ public class Task1Test {
         assertEquals(-1, Task1.minutesToSeconds(null));
         assertEquals(-1, Task1.minutesToSeconds(""));
     }
+
 }
 

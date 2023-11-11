@@ -2,11 +2,12 @@ package edu.hw1;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class Task3Test {
-    @Test
-    @DisplayName("Ответы true false") public void testIsNestable() {
+    @Test @DisplayName("Ответы true false") public void testIsNestable() {
         int[] a1 = {1, 2, 3, 4};
         int[] a2 = {0, 6};
         assertTrue(Task3.isNestable(a1, a2));
@@ -24,8 +25,7 @@ public class Task3Test {
         assertFalse(Task3.isNestable(a7, a8));
     }
 
-    @Test
-    @DisplayName("Минимальное значение") public void testFindMin() {
+    @Test @DisplayName("Минимальное значение") public void testFindMin() {
         int[] arr = {5, 2, 8, 1, 9};
         assertEquals(1, Task3.findMin(arr));
 
@@ -33,8 +33,7 @@ public class Task3Test {
         assertEquals(7, Task3.findMin(arr2));
     }
 
-    @Test
-    @DisplayName("Максимальное значение") public void testFindMax() {
+    @Test @DisplayName("Максимальное значение") public void testFindMax() {
         int[] arr = {5, 2, 8, 1, 9};
         assertEquals(9, Task3.findMax(arr));
 

@@ -12,9 +12,10 @@ public class Task2Test {
         assertEquals(1, Task2.countDigits(0));
         assertEquals(3, Task2.countDigits(-123));
     }
+
     @Test
     @DisplayName("Число лонг формата")
-    public void ebeb(){
+    public void ebeb() {
         assertEquals(10, Task2.countDigits(3000000001L));
     }
 }

@@ -23,7 +23,7 @@ class Task4Test {
     }
 
     @Test
-    @DisplayName(" Пустой пароль")
+    @DisplayName("Пустой пароль")
     public void testEmptyPassword() {
         Task4 task4 = new Task4();
         assertFalse(task4.CorrectOrNot(""));

@@ -10,7 +10,6 @@ import static edu.hw4.Animal.Sex.F;
 import static edu.hw4.Animal.Sex.M;
 import static edu.hw4.Animal.Type.DOG;
 import static edu.hw4.Animal.Type.FISH;
-import static edu.hw4.Animal.Type.SPIDER;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class TasksTests {

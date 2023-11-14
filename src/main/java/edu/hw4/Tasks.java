@@ -138,7 +138,6 @@ public class Tasks {
         return spiderBiteQuantity / spiderQuantity > dogBiteQuantity / dogQuantity;
     }
 
-
     //18
     public static Animal findHeaviestFishInLists(List<Animal>... animals) {
         if (animals.length < 2) {

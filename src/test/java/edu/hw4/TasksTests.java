@@ -204,7 +204,7 @@ public class TasksTests {
         animals.add(new Animal("Petfweya", FISH, F, 32, 53, 264, false));
         animals.add(new Animal("JorFWa", Animal.Type.BIRD, M, 53, 352, 53, false));
         animals.add(new Animal("FW", FISH, F, 30, 90, 432, true));
-        assertThat(tasks.findHeaviestFishInLists(animals, animals2)).isEqualTo(new Animal(
+        assertThat(Tasks.findHeaviestFishInLists(animals, animals2)).isEqualTo(new Animal(
             "FW",
             FISH,
             F,
@@ -213,6 +213,5 @@ public class TasksTests {
             432,
             true
         ));
-
     }
 }

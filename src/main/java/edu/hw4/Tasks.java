@@ -6,7 +6,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-import java.util.Set;
 import java.util.function.BinaryOperator;
 import java.util.function.Function;
 import java.util.stream.Collectors;
@@ -28,7 +27,7 @@ public class Tasks {
     //3
     public Map<Animal.Type, Integer> countTypes(List<Animal> animals) {
         Map<Animal.Type, Integer> types = new HashMap<>();
-        animals.stream().forEach(animal -> {
+        animals.forEach(animal -> {
             if (types.containsKey(animal.type())) {
                 types.put(animal.type(), types.get(animal.type()) + 1);
             } else {
@@ -51,7 +50,7 @@ public class Tasks {
         Map<Animal.Sex, Integer> sexesCount = new HashMap<>();
         sexesCount.put(Animal.Sex.M, 0);
         sexesCount.put(Animal.Sex.F, 0);
-        animals.stream().forEach(animal ->
+        animals.forEach(animal ->
             sexesCount.put(animal.sex(), sexesCount.get(animal.sex()) + 1)
         );
         return sexesCount.get(Animal.Sex.M) >= sexesCount.get(Animal.Sex.F) ? Animal.Sex.M : Animal.Sex.F;
@@ -139,7 +138,7 @@ public class Tasks {
     }
 
     //18
-    public static Animal findHeaviestFishInLists(List<Animal>... animals) {
+    @SafeVarargs public static Animal findHeaviestFishInLists(List<Animal>... animals) {
         if (animals.length < 2) {
             throw new IllegalArgumentException("There should be at least 2 lists");
         }
@@ -150,30 +149,6 @@ public class Tasks {
         return animalList.stream()
             .filter((animal) -> animal.type() == Animal.Type.FISH)
             .max(Comparator.comparingInt(Animal::weight))
-            .get();
-    }
-
-    //19
-    public static Map<String, Set<ValidationError>> animalsWithErrors(List<Animal> animalList) {
-        if ((animalList == null) || (animalList.isEmpty()) || (animalList.contains(null))) {
-            return Map.of();
-        }
-        return animalList.stream()
-            .collect(Collectors.toMap(Animal::name, ValidationError::validateAnimal))
-            .entrySet().stream()
-            .filter((entry) -> !entry.getValue().isEmpty())
-            .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
-    }
-    //20
-
-    public static Map<String, String> animalsWithErrorsString(List<Animal> animalList) {
-        if ((animalList == null) || (animalList.isEmpty()) || (animalList.contains(null))) {
-            return Map.of();
-        }
-        return animalList.stream()
-            .collect(Collectors.toMap(Animal::name, ValidationError::validateAnimalString))
-            .entrySet().stream()
-            .filter((entry) -> !entry.getValue().isEmpty())
-            .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
+            .orElse(null);
     }
 }

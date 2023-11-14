@@ -29,7 +29,9 @@ public class Hangman {
         return WORDS[randomIndex];
     }
 
+    @SuppressWarnings({"RegexpSinglelineJava", "MultipleStringLiterals", "MagicNumber"})
     public void playGame() {
+
         String miss = String.format("{Missed, mistake}");
         Scanner scanner = new Scanner(System.in);
 
@@ -39,8 +41,7 @@ public class Hangman {
             String input = scanner.nextLine();
             if (input.equals("surrender")) {
                 mistakes = 4;
-            }
-            else if (input.length() != 1) {
+            } else if (input.length() != 1) {
                 System.out.println("Please enter a single letter.");
                 continue;
             }
@@ -78,6 +79,7 @@ public class Hangman {
         }
     }
 
+    @SuppressWarnings({"RegexpSinglelineJava", "UncommentedMain"})
     public static void main(String[] args) {
         Hangman game = new Hangman();
         System.out.println("Welcome to Hangman!");

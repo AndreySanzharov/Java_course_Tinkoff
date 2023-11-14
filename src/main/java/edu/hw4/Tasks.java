@@ -7,6 +7,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
+import java.util.function.BinaryOperator;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 @SuppressWarnings({"MethodName", "MagicNumber", "ParameterAssignment"})
@@ -56,8 +58,11 @@ public class Tasks {
     }
 
     //6
-    public Map<Animal.Type, Integer> heaviestAnimal(List<Animal> animals) {
-        return animals.stream().collect(Collectors.toMap(Animal::type, Animal::weight, Integer::max));
+    public Map<Animal.Type, Animal> heaviestAnimalOfTypes(List<Animal> animalList) {
+        return animalList.stream()
+            .collect(Collectors.toMap(Animal::type, Function.identity(),
+                BinaryOperator.maxBy(Comparator.comparing(Animal::weight))
+            ));
     }
 
     //7
@@ -102,9 +107,9 @@ public class Tasks {
     }
 
     //15
-    public Integer WeightFromKtoIlong(List<Animal> animals, Integer k, Integer i) {
-        return animals.stream().filter((animal) -> ((animal.age() >= k) && (animal.age() <= i)))
-            .mapToInt(Animal::weight).sum();
+    public Map<Animal.Type, Integer> summarizeWeightWithCondition(List<Animal> animalList, Integer k, Integer i) {
+        return animalList.stream().filter(animal -> animal.age() >= k && animal.age() <= i)
+            .collect(Collectors.groupingBy(Animal::type, Collectors.summingInt(Animal::weight)));
     }
 
     //16
@@ -114,13 +119,25 @@ public class Tasks {
     }
 
     //17
-    public boolean isItTrueThatSpidersBiteMoreThanDogs(List<Animal> animals) {
-        return animals.stream().mapToInt((animal) -> switch (animal.type()) {
-            case DOG -> (animal.bites()) ? 1 : 0;
-            case SPIDER -> (animal.bites()) ? -1 : 0;
-            default -> 0;
-        }).sum() < 0;
+    public Boolean spiderBitesMoreThanDog(List<Animal> animalList) {
+        long spiderQuantity = animalList.stream()
+            .filter(a -> a.type().equals(Animal.Type.SPIDER))
+            .count();
+        long spiderBiteQuantity = animalList.stream()
+            .filter(a -> a.type().equals(Animal.Type.SPIDER) && a.bites())
+            .count();
+        long dogQuantity = animalList.stream()
+            .filter(a -> a.type().equals(Animal.Type.DOG))
+            .count();
+        long dogBiteQuantity = animalList.stream()
+            .filter(a -> a.type().equals(Animal.Type.DOG) && a.bites())
+            .count();
+        if (spiderQuantity == 0 || dogQuantity == 0) {
+            return false;
+        }
+        return spiderBiteQuantity / spiderQuantity > dogBiteQuantity / dogQuantity;
     }
+
 
     //18
     public static Animal findHeaviestFishInLists(List<Animal>... animals) {

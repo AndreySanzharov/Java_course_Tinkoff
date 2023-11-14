@@ -78,14 +78,14 @@ public class TasksTests {
     //task6
     @Test
     void heaviestAnimalOfTypes() {
-        animals.add(new Animal("wef", DOG, M, 10, 20, 1000, true));
-        animals.add(new Animal("wef", Animal.Type.BIRD, M, 10, 20, 1000, true));
+        animals.add(new Animal("wef", Animal.Type.DOG, Animal.Sex.M, 10, 20, 1000, true));
+        animals.add(new Animal("wef", Animal.Type.BIRD, Animal.Sex.M, 10, 20, 1000, true));
         Map<Animal.Type, Animal> expectedMap = new HashMap<>();
-        expectedMap.put(DOG, new Animal("wef", DOG, M, 10, 20, 1000, true));
-        expectedMap.put(Animal.Type.BIRD, new Animal("wef", Animal.Type.BIRD, M, 10, 20, 1000, true));
-        expectedMap.put(FISH, new Animal("Petya", FISH, F, 32, 53, 243, false));
-        expectedMap.put(Animal.Type.CAT, new Animal("Liza", Animal.Type.CAT, F, 30, 90, 432, true));
-        assertThat(tasks.heaviestAnimal(animals)).isEqualTo(expectedMap);
+        expectedMap.put(Animal.Type.DOG, new Animal("wef", Animal.Type.DOG, Animal.Sex.M, 10, 20, 1000, true));
+        expectedMap.put(Animal.Type.BIRD, new Animal("wef", Animal.Type.BIRD, Animal.Sex.M, 10, 20, 1000, true));
+        expectedMap.put(Animal.Type.FISH, new Animal("Petya", Animal.Type.FISH, Animal.Sex.F, 32, 53, 243, false));
+        expectedMap.put(Animal.Type.CAT, new Animal("Liza", Animal.Type.CAT, Animal.Sex.F, 30, 90, 432, true));
+        assertThat(tasks.heaviestAnimalOfTypes(animals)).isEqualTo(expectedMap);
     }
 
     //task7
@@ -174,11 +174,11 @@ public class TasksTests {
     //task15
     @Test
     void summarizeWeightWithConditionTest() {
-        animals.add(new Animal("wef fdw dsf", Animal.Type.CAT, M, 26, 200, 1000, true));
+        animals.add(new Animal("wef fdw dsf", Animal.Type.CAT, Animal.Sex.M, 26, 200, 1000, true));
         Map<Animal.Type, Integer> expectedMap = new HashMap<>();
-        expectedMap.put(FISH, 243);
+        expectedMap.put(Animal.Type.FISH, 243);
         expectedMap.put(Animal.Type.CAT, 1432);
-        assertThat(tasks.WeightFromKtoIlong(animals, 25, 40)).isEqualTo(expectedMap);
+        assertThat(tasks.summarizeWeightWithCondition(animals, 25, 40)).isEqualTo(expectedMap);
     }
 
     //task16
@@ -192,9 +192,9 @@ public class TasksTests {
     //task17
     @Test
     void spiderBitesMoreThanDogTest() {
-        animals.add(new Animal("wef fdw dsf", SPIDER, M, 26, 200, 1000, true));
-        animals.add(new Animal("wef fdw dsf", DOG, M, 26, 200, 1000, false));
-        assertThat(tasks.isItTrueThatSpidersBiteMoreThanDogs(animals)).isTrue();
+        animals.add(new Animal("wef fdw dsf", Animal.Type.SPIDER, Animal.Sex.M, 26, 200, 1000, true));
+        animals.add(new Animal("wef fdw dsf", Animal.Type.DOG, Animal.Sex.M, 26, 200, 1000, false));
+        assertThat(tasks.spiderBitesMoreThanDog(animals)).isTrue();
     }
 
     //task18

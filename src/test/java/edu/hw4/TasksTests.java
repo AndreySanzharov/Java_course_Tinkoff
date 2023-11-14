@@ -1,17 +1,16 @@
 package edu.hw4;
 
-import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import org.junit.jupiter.api.Test;
 import static edu.hw4.Animal.Sex.F;
 import static edu.hw4.Animal.Sex.M;
 import static edu.hw4.Animal.Type.DOG;
 import static edu.hw4.Animal.Type.FISH;
 import static edu.hw4.Animal.Type.SPIDER;
-import static edu.hw4.Tasks.animalsWithErrors;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class TasksTests {
@@ -215,7 +214,6 @@ public class TasksTests {
             432,
             true
         ));
-
 
     }
 }

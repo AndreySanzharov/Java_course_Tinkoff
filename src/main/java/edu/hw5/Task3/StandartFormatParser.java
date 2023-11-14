@@ -4,7 +4,11 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Optional;
 
+@SuppressWarnings({"MethodName", "UncommentedMain"})
 public class StandartFormatParser {
+    private StandartFormatParser() {
+    }
+
     public static Optional<LocalDate> StandartparseDate(String dateString) {
         DateTimeFormatter[] formatters = {
             DateTimeFormatter.ofPattern("yyyy-MM-dd"),
@@ -25,6 +29,7 @@ public class StandartFormatParser {
         return Optional.empty();
     }
 
+    @SuppressWarnings("RegexpSinglelineJava")
     public static void main(String[] args) {
         // Пример использования
         String dateString = "tomorrow";

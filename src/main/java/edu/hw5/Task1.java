@@ -6,13 +6,15 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
+@SuppressWarnings({"MagicNumber", "ReturnCount"})
 public class Task1 {
+    private Task1() {
+    }
 
     public static String calculatingDuration(List<String> times) {
         if (times == null) {
             return "Список временных интервалов пуст";
         }
-
 
         List<Integer> differences = new ArrayList<>();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd, HH:mm");
@@ -23,20 +25,19 @@ public class Task1 {
             if (parts.length != 2) {
                 return "Неверный формат временного интервала: " + time;
             }
-            try{
-            LocalDateTime parseTime = LocalDateTime.parse(parts[0], formatter);
-            LocalDateTime parseTime2 = LocalDateTime.parse(parts[1], formatter);
-            Duration diff = Duration.between(parseTime, parseTime2);
-            differences.add(Integer.parseInt(String.valueOf(diff.toMinutes())));
-            }catch (Exception e){
+            try {
+                LocalDateTime parseTime = LocalDateTime.parse(parts[0], formatter);
+                LocalDateTime parseTime2 = LocalDateTime.parse(parts[1], formatter);
+                Duration diff = Duration.between(parseTime, parseTime2);
+                differences.add(Integer.parseInt(String.valueOf(diff.toMinutes())));
+            } catch (Exception e) {
                 return "Ошибка при обработке временного интервала: " + time;
             }
         }
 
         if (differences.isEmpty()) {
-            return "Список временных интервалов пуст";
+            return "Список пуст";
         }
-
         int middle = (differences.stream().mapToInt(Integer::intValue).sum()) / differences.size();
         Integer hours = middle / 60;
         Integer minutes = middle % 60;

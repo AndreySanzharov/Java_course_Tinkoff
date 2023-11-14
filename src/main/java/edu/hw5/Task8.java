@@ -4,6 +4,9 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Task8 {
+    private Task8() {
+    }
+
     private static final Pattern FIRST_PATTERN = Pattern.compile("^[01]([01]{2})*$");
     private static final Pattern SECOND_PATTERN = Pattern.compile("^(0([01]{2})*)|(1[01]([01]{2})*)$");
     private static final Pattern THIRD_PATTERN = Pattern.compile("^(1*01*01*01*)+$|^1*$");

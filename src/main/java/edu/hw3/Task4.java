@@ -6,10 +6,12 @@ public class Task4 {
     private Task4() {
     }
 
+    @SuppressWarnings({"checkstyle:MagicNumber", "checkstyle:ParameterAssignment"})
     public static String convertToRoman(int num) {
         if (num < 1 || num > 3999) {
             return "Неверное число";
         }
+
 
         List<String> romanNumerals = List.of(
             "M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I");
@@ -23,7 +25,7 @@ public class Task4 {
         while (num > 0) {
             if (num >= values.get(i)) {
                 roman.append(romanNumerals.get(i));
-                num -= values.get(i);
+                num = num - values.get(i);
             } else {
                 i++;
             }

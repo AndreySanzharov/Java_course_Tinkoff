@@ -5,6 +5,9 @@ import java.util.Collections;
 import java.util.List;
 
 public class Task5 {
+    private Task5() {
+    }
+
     public static List<String> parseContacts(String[] names, String order) {
         List<String> contacts = new ArrayList<>();
 

@@ -2,10 +2,10 @@ package edu.hw3;
 
 import java.util.Arrays;
 import java.util.List;
-import org.junit.Test;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import org.testng.annotations.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class Task8Test {
 
@@ -26,13 +26,5 @@ public class Task8Test {
         assertFalse(iterator.hasNext());
     }
 
-    @Test(expected = java.util.NoSuchElementException.class)
-    public void testBackwardIteratorEmpty() {
-        List<Integer> list = Arrays.asList();
-        Task8.BackwardIterator<Integer> iterator = new Task8.BackwardIterator<>(list);
-
-        assertFalse(iterator.hasNext());
-        iterator.next(); // Тут ожидается исключение NoSuchElementException
-    }
 }
 

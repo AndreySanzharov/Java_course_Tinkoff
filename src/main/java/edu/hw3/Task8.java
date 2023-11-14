@@ -1,10 +1,14 @@
 package edu.hw3;
+
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 import java.util.NoSuchElementException;
 
 public class Task8 {
+    private Task8() {
+    }
+
     public static class BackwardIterator<T> implements Iterator<T> {
         private final List<T> elements;
         private int currentIndex;

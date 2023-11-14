@@ -4,6 +4,9 @@ import java.util.Comparator;
 import java.util.TreeMap;
 
 public class Task7 {
+    private Task7() {
+    }
+
     public class NullHandlingTreeMap<K, V> extends TreeMap<K, V> {
         public NullHandlingTreeMap(Comparator<? super K> comparator) {
             super(comparator);

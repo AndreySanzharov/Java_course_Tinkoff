@@ -1,23 +1,21 @@
 package edu.hw3;
 
-import java.util.Comparator;
-import java.util.TreeMap;
+import java.util.Objects;
 
-public class Task7 {
-    private Task7() {
+public class Task7 implements java.util.Comparator<String> {
+
+    @Override
+    public int compare(String o1, String o2) {
+        if (Objects.equals(o1, o2)) {
+            return 0;
+        }
+        if (o1 == null) {
+            return -1;
+        }
+        if (o2 == null) {
+            return 1;
+        }
+        return o1.compareTo(o2);
     }
 
-    public class NullHandlingTreeMap<K, V> extends TreeMap<K, V> {
-        public NullHandlingTreeMap(Comparator<? super K> comparator) {
-            super(comparator);
-        }
-
-        @Override
-        public V put(K key, V value) {
-            if (key == null) {
-                throw new NullPointerException("Null keys are not allowed");
-            }
-            return super.put(key, value);
-        }
-    }
 }

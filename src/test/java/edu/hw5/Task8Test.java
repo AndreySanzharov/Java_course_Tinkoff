@@ -1,60 +1,57 @@
 package edu.hw5;
 
 import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import static org.junit.jupiter.api.Assertions.*;
-
-class Task8Test {
+public class Task8Test {
 
     @Test
-    void testFirstPatternMatching() {
-        assertTrue(Task8.isMatchesFirst("010"));
-        assertFalse(Task8.isMatchesFirst("110"));
-        assertFalse(Task8.isMatchesFirst("01"));
+    public void testIsOddLength() {
+        assertTrue(Task8.isOddLength("101"));
+        assertFalse(Task8.isOddLength("10"));
+        assertTrue(Task8.isOddLength("111"));
     }
 
     @Test
-    void testSecondPatternMatching() {
-        assertTrue(Task8.isMatchesSecond("010"));
-        assertFalse(Task8.isMatchesSecond("110"));
-        assertFalse(Task8.isMatchesSecond("01"));
+    public void testIsStartedWithZeroAndOddLengthOrStartedWithOneAndEvenLength() {
+        assertTrue(Task8.isStartedWithZeroAndOddLengthOrStartedWithOneAndEvenLength("010"));
+        assertFalse(Task8.isStartedWithZeroAndOddLengthOrStartedWithOneAndEvenLength("110"));
+        assertFalse(Task8.isStartedWithZeroAndOddLengthOrStartedWithOneAndEvenLength("01"));
     }
 
     @Test
-    void testThirdPatternMatching() {
-        assertTrue(Task8.isMatchesThird("010"));
-        assertFalse(Task8.isMatchesThird("1100"));
-        assertFalse(Task8.isMatchesThird(""));
-        assertFalse(Task8.isMatchesThird("101010101010"));
+    public void testIsNumberOfZerosDivisibleByThree() {
+        assertTrue(Task8.isNumberOfZerosDivisibleByThree("000"));
+        assertFalse(Task8.isNumberOfZerosDivisibleByThree("001"));
+        assertFalse(Task8.isNumberOfZerosDivisibleByThree("100"));
     }
 
     @Test
-    void testFourthPatternMatching() {
-        assertTrue(Task8.isMatchesFourth("010"));
-        assertFalse(Task8.isMatchesFourth("111"));
-        assertFalse(Task8.isMatchesFourth("110"));
+    public void testIsAnyStringExceptTwoOrThreeOnesInRow() {
+        assertTrue(Task8.isAnyStringExceptTwoOrThreeOnesInRow("101010"));
+        assertFalse(Task8.isAnyStringExceptTwoOrThreeOnesInRow("111"));
+        assertTrue(Task8.isAnyStringExceptTwoOrThreeOnesInRow("011"));
     }
 
     @Test
-    void testFifthPatternMatching() {
-        assertTrue(Task8.isMatchesFifth("101"));
-        assertFalse(Task8.isMatchesFifth("1001"));
+    public void testIsEveryOddSymbolIsOne() {
+        assertTrue(Task8.isEveryOddSymbolIsOne("10101"));
+        assertFalse(Task8.isEveryOddSymbolIsOne("1001"));
+        assertFalse(Task8.isEveryOddSymbolIsOne("010"));
     }
 
     @Test
-    void testSixthPatternMatching() {
-        assertTrue(Task8.isMatchesSixth("010"));
-        assertTrue(Task8.isMatchesSixth("000"));
-        assertTrue(Task8.isMatchesSixth("01"));
-        assertTrue(Task8.isMatchesSixth("1000"));
-        assertFalse(Task8.isMatchesSixth("11"));
+    public void testDoesContainAtLeastTwoZerosAndLessThanTwoOnes() {
+        assertTrue(Task8.doesContainAtLeastTwoZerosAndLessThanTwoOnes("010"));
+        assertTrue(Task8.doesContainAtLeastTwoZerosAndLessThanTwoOnes("001"));
+        assertFalse(Task8.doesContainAtLeastTwoZerosAndLessThanTwoOnes("111"));
     }
 
     @Test
-    void testSeventhPatternMatching() {
-        assertTrue(Task8.isMatchesSeventh("010"));
-        assertFalse(Task8.isMatchesSeventh("111"));
-        assertTrue(Task8.isMatchesSeventh("01010"));
-        assertFalse(Task8.isMatchesSeventh("01011"));
+    public void testHasNotTwoOnesInRow() {
+        assertTrue(Task8.hasNotTwoOnesInRow("010"));
+        assertFalse(Task8.hasNotTwoOnesInRow("110"));
+        assertFalse(Task8.hasNotTwoOnesInRow("111"));
     }
 }

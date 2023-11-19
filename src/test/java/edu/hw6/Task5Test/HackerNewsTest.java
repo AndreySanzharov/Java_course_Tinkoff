@@ -1,13 +1,13 @@
 package edu.hw6.Task5Test;
 
 import edu.hw6.Task5.HackerNews;
+import java.net.URI;
+import java.util.stream.Stream;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
-import java.net.URI;
-import java.util.stream.Stream;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class HackerNewsTest {
@@ -19,16 +19,20 @@ class HackerNewsTest {
             ),
             Arguments.of(
                 38316936L,
-                "Show HN: Open-source tool for creating courses like Duolingo"),
+                "Show HN: Open-source tool for creating courses like Duolingo"
+            ),
             Arguments.of(
                 38316953L,
-                "GTK: Introducing Graphics Offload"),
+                "GTK: Introducing Graphics Offload"
+            ),
             Arguments.of(
                 38318127L,
-                "Show HN: ColBERT Build from Sentence Transformers"),
+                "Show HN: ColBERT Build from Sentence Transformers"
+            ),
             Arguments.of(
                 38317924L,
-                "OpenVMS Account at DECUServe")
+                "OpenVMS Account at DECUServe"
+            )
         );
     }
 

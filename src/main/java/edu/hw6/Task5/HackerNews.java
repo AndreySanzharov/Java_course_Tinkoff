@@ -15,7 +15,8 @@ public final class HackerNews {
     private static final URI TOP_STORIES_URI = BASE_URI.resolve("topstories.json");
     private static final URI ITEM_URI = BASE_URI.resolve("item/");
 
-    private HackerNews() {}
+    private HackerNews() {
+    }
 
     public static URI getTopStoriesUri() {
         return TOP_STORIES_URI;

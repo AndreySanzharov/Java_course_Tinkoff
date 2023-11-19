@@ -12,7 +12,8 @@ import java.util.zip.CRC32;
 import java.util.zip.CheckedOutputStream;
 
 public final class OutputStreamCompositionManager {
-    private OutputStreamCompositionManager() {}
+    private OutputStreamCompositionManager() {
+    }
 
     public static void writeToFile(Path filePath, String message) {
         try (

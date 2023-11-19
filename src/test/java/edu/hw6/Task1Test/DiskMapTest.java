@@ -1,5 +1,9 @@
 package edu.hw6.Task1Test;
 
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileReader;
@@ -10,20 +14,16 @@ import java.nio.file.StandardOpenOption;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class DiskMapTest {
     final String fileToLoadFromName = "src/test/java/edu/hw6/Task1Test/fileToLoadFrom.txt";
     final String fileSaveToName = "src/test/java/edu/hw6/Task1Test/fileSaveTo.txt";
-    edu.hw6.task1.DiskMap diskMap;
+    edu.hw6.Task1.DiskMap diskMap;
 
     @BeforeEach
     void createDiskMap() {
-        diskMap = new edu.hw6.task1.DiskMap();
+        diskMap = new edu.hw6.Task1.DiskMap();
     }
 
     @AfterEach

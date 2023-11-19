@@ -1,4 +1,4 @@
-package edu.hw6.task1;
+package edu.hw6.Task1;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;

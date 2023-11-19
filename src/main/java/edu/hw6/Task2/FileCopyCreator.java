@@ -12,7 +12,8 @@ public final class FileCopyCreator {
     private static final String TXT = ".txt";
     private static final Logger LOGGER = LogManager.getLogger();
 
-    private FileCopyCreator() {}
+    private FileCopyCreator() {
+    }
 
     public static void cloneFile(Path path) throws FileNotFoundException {
         if (!Files.exists(path)) {

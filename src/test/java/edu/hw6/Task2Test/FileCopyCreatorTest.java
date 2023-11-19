@@ -82,7 +82,9 @@ class FileCopyCreatorTest {
     @Test
     @DisplayName("Проверка копирования несуществующего файла")
     public void cloneFile_shouldThrowFileNotFoundException() {
-        assertThrows(FileNotFoundException.class,
-            () -> FileCopyCreator.cloneFile(Path.of("Tinkoff Bank Biggest Secret.txt")));
+        assertThrows(
+            FileNotFoundException.class,
+            () -> FileCopyCreator.cloneFile(Path.of("Tinkoff Bank Biggest Secret.txt"))
+        );
     }
 }

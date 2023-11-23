@@ -1,10 +1,8 @@
 package edu.hw7;
 
 import edu.hw7.Task1.AtomicCounter;
-import org.junit.Test;
-
 import java.util.concurrent.CountDownLatch;
-
+import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
 public class Task1Test {
@@ -29,7 +27,6 @@ public class Task1Test {
             });
             thread.start();
         }
-
 
         latch.await();
 

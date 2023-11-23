@@ -2,6 +2,8 @@ package edu.hw7.Task1;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
+@SuppressWarnings({"MagicNumber", "RegexpSinglelineJava", "UncommentedMain"})
+
 public class AtomicCounter {
     private final AtomicInteger counter = new AtomicInteger(0);
 
@@ -11,6 +13,7 @@ public class AtomicCounter {
             System.out.println("Counter Value: " + newValue);
         }
     }
+
     public int getCounter() {
         return counter.get();
     }

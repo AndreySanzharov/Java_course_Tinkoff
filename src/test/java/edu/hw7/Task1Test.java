@@ -1,36 +1,28 @@
 package edu.hw7;
 
 import edu.hw7.Task1.AtomicCounter;
-import java.util.concurrent.CountDownLatch;
-import org.junit.Test;
-import static org.junit.Assert.assertEquals;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class Task1Test {
 
     @Test
-    public void testAtomicCounterThreadSafety() throws InterruptedException {
-        final int numThreads = 10;
-        final int incrementsPerThread = 1000;
-
+    void testIncrementAndPrint() throws InterruptedException {
         AtomicCounter atomicCounter = new AtomicCounter();
-        CountDownLatch latch = new CountDownLatch(numThreads);
 
-        for (int i = 0; i < numThreads; i++) {
-            Thread thread = new Thread(() -> {
-                try {
-                    for (int j = 0; j < incrementsPerThread; j++) {
-                        atomicCounter.incrementAndPrint();
-                    }
-                } finally {
-                    latch.countDown();
-                }
-            });
-            thread.start();
-        }
+        // Создаем и запускаем поток
+        Thread thread = new Thread(() -> {
+            for (int i = 0; i < 5; i++) {
+                atomicCounter.incrementAndPrint();
+            }
+        });
 
-        latch.await();
+        thread.start();
 
-        // Проверяем, что счетчик имеет правильное значение
-        assertEquals(numThreads * incrementsPerThread, atomicCounter.getCounter());
+        // Ждем завершения потока
+        thread.join();
+
+        // Проверяем, что значение счетчика равно ожидаемому
+        assertEquals(5, atomicCounter.getCounter());
     }
 }

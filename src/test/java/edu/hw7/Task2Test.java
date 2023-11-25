@@ -12,7 +12,6 @@ public class Task2Test {
         assertEquals(1, FactorialCalculator.factorial(1));
         assertEquals(120, FactorialCalculator.factorial(5));
         assertEquals(3628800, FactorialCalculator.factorial(10));
-        // Добавьте другие тестовые случаи по мере необходимости
     }
 
     @Test(expected = IllegalArgumentException.class)

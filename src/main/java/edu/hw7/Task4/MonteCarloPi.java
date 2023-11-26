@@ -2,7 +2,11 @@ package edu.hw7.Task4;
 
 import java.util.concurrent.ThreadLocalRandom;
 
+@SuppressWarnings("MagicNumber")
 public class MonteCarloPi {
+
+    private MonteCarloPi() {
+    }
 
     public static double calculatePiSingleThreaded(int totalSimulations) {
         int circleCount = 0;

@@ -14,7 +14,6 @@ public class Client {
 
     public static void main(String[] args) {
         try (
-            // Создаем сокет для подключения к серверу
             Socket socket = new Socket(SERVER_ADDRESS, SERVER_PORT);
             BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             PrintWriter writer = new PrintWriter(socket.getOutputStream(), true);
@@ -29,10 +28,8 @@ public class Client {
                     break;
                 }
 
-                // Отправляем введенное сообщение на сервер
                 writer.println(userInput);
 
-                // Читаем ответ от сервера и выводим его
                 String serverResponse = reader.readLine();
                 System.out.println("Сервер: " + serverResponse);
             }

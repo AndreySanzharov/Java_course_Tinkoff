@@ -14,17 +14,14 @@ public class ClientHandler implements Runnable {
         this.clientSocket = clientSocket;
     }
 
-    @Override
     public void run() {
         try (
-            // Создаем потоки ввода и вывода для обмена данными с клиентом
             BufferedReader reader = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
             PrintWriter writer = new PrintWriter(clientSocket.getOutputStream(), true)
         ) {
             String inputLine;
             while ((inputLine = reader.readLine()) != null) {
                 System.out.println("Received message from " + clientSocket.getInetAddress() + ": " + inputLine);
-                // Обрабатываем входящее сообщение и отправляем ответ
                 String response = processInput(inputLine);
                 writer.println(response);
             }
@@ -34,7 +31,6 @@ public class ClientHandler implements Runnable {
     }
 
     private String processInput(String input) {
-        // Обработка ключевых слов и формирование ответа
         switch (input.toLowerCase()) {
             case "личности":
                 return "Не переходи на личности там, где их нет";

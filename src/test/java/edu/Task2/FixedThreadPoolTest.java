@@ -26,17 +26,14 @@ public class FixedThreadPoolTest {
         CountDownLatch latch = new CountDownLatch(3);
 
         threadPool.execute(() -> {
-            // Task 1
             latch.countDown();
         });
 
         threadPool.execute(() -> {
-            // Task 2
             latch.countDown();
         });
 
         threadPool.execute(() -> {
-            // Task 3
             latch.countDown();
         });
 
@@ -47,7 +44,6 @@ public class FixedThreadPoolTest {
     public void testExecuteAfterShutdownThrowsException() {
         threadPool.close();
         threadPool.execute(() -> {
-            // This should throw IllegalStateException
         });
     }
 
@@ -57,7 +53,6 @@ public class FixedThreadPoolTest {
 
         threadPool.execute(() -> {
             try {
-                // Simulate a long-running task
                 Thread.sleep(1000);
             } catch (InterruptedException e) {
                 Thread.currentThread().interrupt();
@@ -67,8 +62,6 @@ public class FixedThreadPoolTest {
         });
 
         threadPool.close();
-
-        // Verify that all tasks are completed before shutdown
         assertTrue(latch.await(5, TimeUnit.SECONDS));
     }
 }

@@ -11,6 +11,10 @@ public class Server {
     private static final int PORT = 5555;
     private static final int MAX_CONNECTIONS = 5;
 
+    private Server() {
+    }
+
+    @SuppressWarnings({"UncommentedMain", "RegexpSinglelineJava"})
     public static void main(String[] args) {
         ExecutorService executorService = Executors.newFixedThreadPool(MAX_CONNECTIONS);
 

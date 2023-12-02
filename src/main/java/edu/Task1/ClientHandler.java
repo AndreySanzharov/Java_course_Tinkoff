@@ -6,6 +6,7 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
 
+@SuppressWarnings({"ReturnCount", "RegexpSinglelineJava", "OperatorWrap"})
 public class ClientHandler implements Runnable {
 
     private final Socket clientSocket;
@@ -37,7 +38,8 @@ public class ClientHandler implements Runnable {
             case "оскорбления":
                 return "Если твои противники перешли на личные оскорбления, будь уверена — твоя победа не за горами";
             case "глупый":
-                return "А я тебе говорил, что ты глупый? Так вот, я забираю свои слова обратно... Ты просто бог идиотизма.";
+                return "А я тебе говорил, что ты глупый? Так вот, я забираю свои слова обратно... Ты просто бог " +
+                    "идиотизма.";
             case "интеллект":
                 return "Чем ниже интеллект, тем громче оскорбления";
             default:

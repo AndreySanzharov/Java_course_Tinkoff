@@ -1,63 +1,77 @@
 package edu.hw4;
 
-import java.util.HashSet;
-import java.util.Set;
+import edu.hw4.Errors.AgeError;
+import edu.hw4.Errors.HeightError;
+import edu.hw4.Errors.NameError;
+import edu.hw4.Errors.WeightError;
 
-public enum ValidationError {
+public class ValidationError {
 
-    NAME_ERROR,
-    TYPE_ERROR,
-    SEX_ERROR,
-    AGE_ERROR,
-    HEIGHT_ERROR,
-    WEIGHT_ERROR;
+    private NameError nameError;
+    private AgeError ageError;
+    private HeightError heightError;
+    private WeightError weightError;
 
-    private static final int AGE_BOUND = 100;
-    private static final String PATTERN = "^[a-zA-Z\\s]*$";
-
-    public static Set<ValidationError> validateAnimal(Animal animal) {
-        Set<ValidationError> set = new HashSet<>();
-        if ((animal.name() == null) || (animal.name().trim().isEmpty()) || (!animal.name().matches(PATTERN))) {
-            set.add(NAME_ERROR);
-        }
-        if (animal.type() == null) {
-            set.add(TYPE_ERROR);
-        }
-        if (animal.sex() == null) {
-            set.add(SEX_ERROR);
-        }
-        if ((animal.age() < 1) || (animal.age() > AGE_BOUND)) {
-            set.add(AGE_ERROR);
-        }
-        if (animal.height() < 1) {
-            set.add(HEIGHT_ERROR);
-        }
-        if (animal.weight() < 1) {
-            set.add(WEIGHT_ERROR);
-        }
-        return set;
+    public void checkAllErrors(Animal animal) {
+        nameError = new NameError(animal);
+        ageError = new AgeError(animal);
+        heightError = new HeightError(animal);
+        weightError = new WeightError(animal);
     }
 
-    public static String validateAnimalString(Animal animal) {
-        StringBuilder stringBuilder = new StringBuilder();
-        if ((animal.name() == null) || (animal.name().trim().isEmpty()) || (!animal.name().matches(PATTERN))) {
-            stringBuilder.append(NAME_ERROR).append(" ");
+    public NameError getNameError() {
+        return nameError;
+    }
+
+    public AgeError getAgeError() {
+        return ageError;
+    }
+
+    public HeightError getHeightError() {
+        return heightError;
+    }
+
+    public WeightError getWeightError() {
+        return weightError;
+    }
+
+    @Override public boolean equals(Object o) {
+        if (this == o) {
+            return true;
         }
-        if (animal.type() == null) {
-            stringBuilder.append(TYPE_ERROR).append(" ");
+        if (o == null || getClass() != o.getClass()) {
+            return false;
         }
-        if (animal.sex() == null) {
-            stringBuilder.append(SEX_ERROR).append(" ");
+
+        ValidationError that = (ValidationError) o;
+
+        if (nameError != null ? !nameError.equals(that.nameError) : that.nameError != null) {
+            return false;
         }
-        if ((animal.age() < 1) || (animal.age() > AGE_BOUND)) {
-            stringBuilder.append(AGE_ERROR).append(" ");
+        if (ageError != null ? !ageError.equals(that.ageError) : that.ageError != null) {
+            return false;
         }
-        if (animal.height() < 1) {
-            stringBuilder.append(HEIGHT_ERROR).append(" ");
+        if (heightError != null ? !heightError.equals(that.heightError) : that.heightError != null) {
+            return false;
         }
-        if (animal.weight() < 1) {
-            stringBuilder.append(WEIGHT_ERROR).append(" ");
-        }
-        return String.valueOf(stringBuilder);
+        return weightError != null ? weightError.equals(that.weightError) : that.weightError == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = nameError != null ? nameError.hashCode() : 0;
+        result = 31 * result + (ageError != null ? ageError.hashCode() : 0);
+        result = 31 * result + (heightError != null ? heightError.hashCode() : 0);
+        result = 31 * result + (weightError != null ? weightError.hashCode() : 0);
+        return result;
+    }
+
+    @Override public String toString() {
+        return "ValidationError{"
+            + "nameError=" + nameError
+            + ", ageError=" + ageError
+            + ", heightError=" + heightError
+            + ", weightError=" + weightError
+            + '}';
     }
 }

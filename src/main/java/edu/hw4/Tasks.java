@@ -19,7 +19,7 @@ public class Tasks {
     }
 
     //2
-    public List<Animal> LightToHeavyWeight(List<Animal> animals, Integer k) {
+    public List<Animal> lightToHeavyWeight(List<Animal> animals, Integer k) {
         animals = animals.stream().sorted(Comparator.comparing(Animal::weight).reversed()).limit(k).toList();
         return animals;
     }
@@ -38,10 +38,10 @@ public class Tasks {
     }
 
     //4
-    public Animal LongestName(List<Animal> animals) {
+    public Animal longestName(List<Animal> animals) {
         animals =
             animals.stream().sorted((Animal n1, Animal n2) -> Integer.compare(n2.name().length(), n1.name().length()))
-                .limit(1).toList();
+                .limit(1).toList().reversed();
         return animals.get(0);
     }
 
@@ -80,7 +80,7 @@ public class Tasks {
     }
 
     //10
-    public List<Animal> AnimalsWithAgeNotEqualsPaws(List<Animal> animals) {
+    public List<Animal> animalsWithAgeNotEqualsPaws(List<Animal> animals) {
         return animals.stream().filter((animal) -> animal.age() != animal.paws()).toList();
     }
 
@@ -112,29 +112,22 @@ public class Tasks {
     }
 
     //16
-    public List<Animal> SomeSorts(List<Animal> animals) {
+    public List<Animal> someSorts(List<Animal> animals) {
         return animals.stream()
             .sorted(Comparator.comparing(Animal::type).thenComparing(Animal::sex).thenComparing(Animal::name)).toList();
     }
 
     //17
     public Boolean spiderBitesMoreThanDog(List<Animal> animalList) {
-        long spiderQuantity = animalList.stream()
-            .filter(a -> a.type().equals(Animal.Type.SPIDER))
+        long bitingSpiders = animalList.stream()
+            .filter(animal -> animal.type() == Animal.Type.SPIDER && animal.bites())
             .count();
-        long spiderBiteQuantity = animalList.stream()
-            .filter(a -> a.type().equals(Animal.Type.SPIDER) && a.bites())
+
+        long bitingDogs = animalList.stream()
+            .filter(animal -> animal.type() == Animal.Type.DOG && animal.bites())
             .count();
-        long dogQuantity = animalList.stream()
-            .filter(a -> a.type().equals(Animal.Type.DOG))
-            .count();
-        long dogBiteQuantity = animalList.stream()
-            .filter(a -> a.type().equals(Animal.Type.DOG) && a.bites())
-            .count();
-        if (spiderQuantity == 0 || dogQuantity == 0) {
-            return false;
-        }
-        return spiderBiteQuantity / spiderQuantity > dogBiteQuantity / dogQuantity;
+
+        return bitingSpiders > bitingDogs;
     }
 
     //18
@@ -150,5 +143,33 @@ public class Tasks {
             .filter((animal) -> animal.type() == Animal.Type.FISH)
             .max(Comparator.comparingInt(Animal::weight))
             .orElse(null);
+    }
+
+    //19
+    Map<String, ValidationError> findErrors(List<Animal> animalList) {
+        Map<String, ValidationError> errorsOfAnimals =
+            animalList.stream()
+                .collect(Collectors.toMap(Animal::name, a -> {
+                    ValidationError validationError = new ValidationError();
+                    validationError.checkAllErrors(a);
+                    return validationError;
+                }));
+        return errorsOfAnimals;
+    }
+
+    //20
+    Map<String, String> findErrorsWithMessage(List<Animal> animalList) {
+        Map<String, String> errorsOfAnimals =
+            animalList.stream()
+                .collect(Collectors.toMap(Animal::name, a -> {
+                    ValidationError validationError = new ValidationError();
+                    validationError.checkAllErrors(a);
+                    String message = validationError.getNameError().getMessage() + " "
+                        + validationError.getAgeError().getMessage() + " "
+                        + validationError.getHeightError().getMessage() + " "
+                        + validationError.getWeightError().getMessage();
+                    return message;
+                }));
+        return errorsOfAnimals;
     }
 }

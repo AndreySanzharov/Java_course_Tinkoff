@@ -1,6 +1,7 @@
 package edu.hw4;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -11,6 +12,7 @@ import static edu.hw4.Animal.Sex.M;
 import static edu.hw4.Animal.Type.DOG;
 import static edu.hw4.Animal.Type.FISH;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class TasksTests {
     Tasks tasks = new Tasks();
@@ -46,7 +48,7 @@ public class TasksTests {
         expectedList.add(new Animal("Liza", Animal.Type.CAT, F, 30, 90, 432, true));
         expectedList.add(new Animal("Vasyaa", DOG, M, 10, 32, 364, true));
 
-        assertThat(tasks.LightToHeavyWeight(animals, 2)).isEqualTo(expectedList);
+        assertThat(tasks.lightToHeavyWeight(animals, 2)).isEqualTo(expectedList);
     }
 
     //task3
@@ -63,8 +65,14 @@ public class TasksTests {
     //task4
     @Test
     void longestNameTest() {
-        Animal expected = new Animal("Vasyaa", DOG, M, 10, 32, 364, true);
-        assertThat(tasks.LongestName(animals)).isEqualTo(expected);
+        Animal lion = new Animal("Lion", DOG, M, 10, 32, 364, true);
+        Animal elephant = new Animal("Elephant", DOG, M, 10, 32, 364, true);
+        Animal giraffe = new Animal("Giraffe", DOG, M, 10, 32, 364, true);
+        List<Animal> animals = Arrays.asList(lion, elephant, giraffe);
+        Animal longestNameAnimal = new Tasks().longestName(animals);
+
+        assertEquals(elephant, longestNameAnimal);
+
     }
 
     //task5
@@ -131,7 +139,7 @@ public class TasksTests {
         animals.add(new Animal("wef", Animal.Type.BIRD, M, 2, 20, 1000, true));
 
         List<Animal> expectedAnimals = createAnimals();
-        assertThat(tasks.AnimalsWithAgeNotEqualsPaws(animals)).isEqualTo(expectedAnimals);
+        assertThat(tasks.animalsWithAgeNotEqualsPaws(animals)).isEqualTo(expectedAnimals);
     }
 
     //task11
@@ -184,15 +192,16 @@ public class TasksTests {
     @Test
     void sortTypeSexName() {
         animals.add(new Animal("wef fdw dsf", Animal.Type.CAT, M, 26, 200, 1000, true));
-        System.out.println(tasks.SomeSorts(animals));
+        System.out.println(tasks.someSorts(animals));
         System.out.println();
     }
 
     //task17
     @Test
     void spiderBitesMoreThanDogTest() {
-        animals.add(new Animal("wef fdw dsf", Animal.Type.SPIDER, Animal.Sex.M, 26, 200, 1000, true));
-        animals.add(new Animal("wef fdw dsf", Animal.Type.DOG, Animal.Sex.M, 26, 200, 1000, false));
+        animals.add(new Animal("A", Animal.Type.SPIDER, Animal.Sex.M, 26, 200, 1000, true));
+        animals.add(new Animal("B", Animal.Type.SPIDER, Animal.Sex.M, 26, 200, 1000, true));
+        animals.add(new Animal("C", Animal.Type.DOG, Animal.Sex.M, 26, 200, 1000, false));
         assertThat(tasks.spiderBitesMoreThanDog(animals)).isTrue();
     }
 
@@ -213,5 +222,26 @@ public class TasksTests {
             432,
             true
         ));
+    }
+
+    //task19
+    @Test
+    void findErrorsTest() {
+        animals.add(new Animal("3429fu f3f4", FISH, F, 30, 90, 432, true));
+        Map<String, ValidationError> errors = tasks.findErrors(animals);
+        assertThat(errors.get("Vasyaa").getWeightError().getMessage()).isEqualTo(
+            "This type of animal can't have weight 364!");
+        assertThat(errors.get("3429fu f3f4").getNameError().getMessage()).isEqualTo("Used illegal symbols!");
+    }
+
+    //task20
+    @Test
+    void findErrorsWithMessageTest() {
+        Map<String, String> errors = tasks.findErrorsWithMessage(animals);
+        System.out.println(errors);
+        assertThat(errors.get("Liza")).isEqualTo(
+            "No name error. No age error. This type of animal can't have height 90! This type of animal can't have weight 432!");
+        assertThat(errors.get("Vasyaa")).isEqualTo(
+            "No name error. No age error. No height error. This type of animal can't have weight 364!");
     }
 }

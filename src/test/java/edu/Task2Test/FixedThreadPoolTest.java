@@ -1,8 +1,8 @@
 package edu.Task2Test;
 
+import edu.Task2.FixedThreadPool;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
-import edu.Task2.FixedThreadPool;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;

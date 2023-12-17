@@ -1,5 +1,6 @@
 package edu.hw10.Task1;
 
+import edu.hw10.RandomObjectGenerator;
 import edu.hw10.Task1.MyObjects.MyClass;
 import edu.hw10.Task1.MyObjects.MyRecord;
 import org.junit.jupiter.api.DisplayName;
@@ -8,7 +9,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class Task1Test {
-    private static final edu.hw10.Task1.RandomObjectGenerator generator = new edu.hw10.Task1.RandomObjectGenerator();
+    private static final RandomObjectGenerator generator = new RandomObjectGenerator();
 
     @Test
     @DisplayName("RandomObjectGenerator Test : MyClass Constructor")

@@ -1,6 +1,5 @@
 package edu.hw10.Task1;
 
-import edu.hw10.RandomObjectGenerator;
 import edu.hw10.Task1.MyObjects.MyClass;
 import edu.hw10.Task1.MyObjects.MyRecord;
 import org.junit.jupiter.api.DisplayName;

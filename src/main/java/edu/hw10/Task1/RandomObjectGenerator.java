@@ -1,4 +1,4 @@
-package edu.hw10;
+package edu.hw10.Task1;
 
 import edu.hw10.Task1.Generators.BooleanGenerator;
 import edu.hw10.Task1.Generators.ByteGenerator;
